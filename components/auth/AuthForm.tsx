@@ -79,7 +79,7 @@ export default function AuthForm({
           <Input
             label='Confirm Email Address'
             onUpdateValue={(enteredText) =>
-              updateInputValueHandler.bind('confirmEmail', enteredText)
+              updateInputValueHandler('confirmEmail', enteredText)
             }
             value={enteredConfirmEmail}
             keyboardType='email-address'
@@ -89,7 +89,7 @@ export default function AuthForm({
         <Input
           label='Password'
           onUpdateValue={(enteredText) =>
-            updateInputValueHandler.bind('password', enteredText)
+            updateInputValueHandler('password', enteredText)
           }
           secure={true}
           value={enteredPassword}
@@ -99,7 +99,7 @@ export default function AuthForm({
           <Input
             label='Confirm Password'
             onUpdateValue={(enteredText) =>
-              updateInputValueHandler.bind('confirmPassword', enteredText)
+              updateInputValueHandler('confirmPassword', enteredText)
             }
             secure={true}
             value={enteredConfirmPassword}

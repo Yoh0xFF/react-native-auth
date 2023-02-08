@@ -1,13 +1,18 @@
+import { NavigationProp, useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useState } from 'react';
 import { Alert, StyleSheet, View } from 'react-native';
 
+import { StackNavParams } from '../../App';
 import { Colors } from '../../constants/styles';
 import FlatButton from '../ui/FlatButton';
 import AuthForm from './AuthForm';
 
+type NavProps = NativeStackNavigationProp<StackNavParams>;
+
 export interface Props {
   isLogin?: boolean;
-  onAuthenticate: (value: { email: string; password: string }) => void;
+  onAuthenticate: (email: string, password: string) => void;
 }
 
 export default function AuthContent({
@@ -21,8 +26,14 @@ export default function AuthContent({
     confirmPassword: false,
   });
 
+  const { replace } = useNavigation<NavProps>();
+
   const switchAuthModeHandler = () => {
-    // Todo
+    if (isLogin) {
+      replace('Signup');
+    } else {
+      replace('Login');
+    }
   };
 
   const submitHandler = (credentials: {
@@ -55,7 +66,7 @@ export default function AuthContent({
       });
       return;
     }
-    onAuthenticate({ email, password });
+    onAuthenticate(email, password);
   };
 
   return (
