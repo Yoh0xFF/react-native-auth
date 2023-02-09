@@ -7,7 +7,7 @@ async function authenticate(
   mode: 'signInWithPassword' | 'signUp',
   email: string,
   password: string
-) {
+): Promise<string> {
   const response = await axios.post(
     `${baseUrl}/accounts:${mode}?key=${apiKey}`,
     {
@@ -17,13 +17,17 @@ async function authenticate(
     }
   );
 
-  console.log(response.data);
+  const token: string = response.data.idToken;
+  return token;
 }
 
-export async function createUser(email: string, password: string) {
-  await authenticate('signUp', email, password);
+export async function createUser(
+  email: string,
+  password: string
+): Promise<string> {
+  return await authenticate('signUp', email, password);
 }
 
-export async function login(email: string, password: string) {
-  await authenticate('signInWithPassword', email, password);
+export async function login(email: string, password: string): Promise<string> {
+  return await authenticate('signInWithPassword', email, password);
 }

@@ -2,10 +2,10 @@ import { Ionicons } from '@expo/vector-icons';
 import { Pressable, StyleSheet } from 'react-native';
 
 interface Props {
-  icon: any;
-  color: string;
-  size: number;
-  onPress: () => void;
+  icon?: any;
+  color?: string;
+  size?: number;
+  onPress?: () => void;
 }
 
 export default function IconButton({ icon, color, size, onPress }: Props) {
