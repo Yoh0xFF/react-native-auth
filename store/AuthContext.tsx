@@ -1,4 +1,11 @@
-import { ReactNode, createContext, useContext, useState } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {
+  ReactNode,
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
 
 export interface AuthContextType {
   token: string;
@@ -29,9 +36,11 @@ export function AuthContextProvider({ children }: { children: ReactNode }) {
 
   const authenticate = (token: string) => {
     setToken(token);
+    AsyncStorage.setItem('token', token);
   };
   const logout = () => {
     setToken('');
+    AsyncStorage.removeItem('token');
   };
 
   return (
