@@ -1,6 +1,6 @@
 # react-native-auth
 
-A simple app that demonstrates basic auth flow on the mobile.
+A simple app that demonstrates basic authentication flow on the mobile.
 
 It demonstrates how to use:
 
